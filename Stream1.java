@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Stream1 {
@@ -54,6 +55,17 @@ public class Stream1 {
 
         //SKIP: skip first 5 values and limit upto 10th number
         Stream.iterate(1, n-> n+1).limit(10).skip(5).forEach(System.out::println);
+
+        //REDUCE(terminal)
+        System.out.println(Stream.iterate(1, n-> n+1).limit(5).reduce(0, (a,b)-> a+b));
+
+        //COLLECT(terminal)
+        List<String> names = List.of("Sunil", "till", "sonal");
+        //Stream<String> strnames = names.stream();
+
+        List<String> liststream = names.stream().filter(word -> word.startsWith("s")).collect(Collectors.toList());
+        liststream.forEach(System.out::println);
+
 
 
 
